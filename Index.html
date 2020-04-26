@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word Guessing Game</title>
+</head>
+
+<body>
+
+    <h1>Hangman</h1>
+    <p>Press any key to get started!</p>
+    <br>
+    <p class = "winsNum">Wins: </p>
+    <br>
+    <p class = "lossNum">Losses: </p>
+    <br>
+    <p class = "hangman">Current Word</p>
+    <br>
+    <p class = "lettersGuessed"></p>
+
+    <script>
+        var name = prompt("What is your name?");
+        alert("Hello " + name);
+
+        var words = ["javascript", "monkey", "amazing", "pancake"];
+        var rdmWord = words[Math.floor(Math.random() * rdmWord.length)];
+        var answerArray = [];
+        for (var i = 0; i < rdmWord.length; i++) {
+            answerArray[i] = "_";
+        }
+        var remainingLetters = rdmWord.length;
+
+        while (remainingLetters > 0) {
+            alert(answerArray.join(""));
+            var guess = prompt("Guess a letter, or click Cancel to stop playing.");
+            if (guess === null) {
+                break;
+            }
+            else if(guess.length !== 1) {
+                alert("Please enter a single letter.");
+            }
+            else{ 
+                for (var j = 0; j < rdmWord.length; j++) {
+                if (rdmWord[j] === guess) {
+                    answerArray[j] = guess;
+                    remainingLetters--;
+                }
+            }
+            }
+            alert(answerArray.join(" "));
+        }
+        alert("Good job! The answer was " + word);
+    </script>
+</body>
+
+</html>
